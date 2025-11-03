@@ -1,0 +1,11 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <!-- Login button -->
+    <!-- Inner fill (soft transparent white) -->
+    <solid android:color="#33FFFFFF" />
+
+    <!-- Outer border -->
+    <stroke
+        android:width="2dp"
+        android:color="#FFFFFF" />
+</shape>
