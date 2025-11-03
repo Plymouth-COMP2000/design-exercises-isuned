@@ -2,14 +2,12 @@
     android:color="#33FFFFFF">
     <item>
         <shape android:shape="oval">
-            <gradient
-                android:startColor="#FF4A9DFF"
-                android:centerColor="#FF6F61"
-                android:endColor="#FF9A3C"
-                android:angle="45" />
-            <stroke android:width="3dp" android:color="#FFFFFFFF" />
+            <!-- Soft transparent background -->
+            <solid android:color="#40FFFFFF" />
+            <!-- White border -->
+            <stroke android:width="2dp" android:color="#FFFFFFFF" />
+            <!-- Size & roundness -->
             <size android:width="130dp" android:height="130dp" />
-            <corners android:radius="100dp" />
         </shape>
     </item>
 </ripple>

@@ -1,16 +1,10 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="#33FFFFFF">
-
+    android:color="#44FFFFFF">
     <item>
         <shape android:shape="oval">
-            <gradient
-                android:startColor="#FFEB3B"
-                android:centerColor="#FF9800"
-                android:endColor="#F44336"
-                android:angle="45" />
-            <stroke android:width="3dp" android:color="#FFFFFFFF" />
-            <size android:width="130dp" android:height="130dp" />
-            <corners android:radius="100dp" />
+            <solid android:color="#00FFFFFF"/> <!-- clear center -->
+            <stroke android:width="3dp" android:color="#FF6F61" />
+            <size android:width="180dp" android:height="180dp" />
         </shape>
     </item>
 </ripple>
