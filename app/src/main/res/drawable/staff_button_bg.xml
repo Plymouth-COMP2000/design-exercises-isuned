@@ -1,13 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="#33FFFFFF">
+    android:color="#66FFFFFF">
+
     <item>
-        <shape android:shape="oval">
-            <!-- Soft transparent background -->
-            <solid android:color="#40FFFFFF" />
-            <!-- White border -->
-            <stroke android:width="2dp" android:color="#FFFFFFFF" />
-            <!-- Size & roundness -->
-            <size android:width="130dp" android:height="130dp" />
+        <shape android:shape="rectangle">
+            <!-- Strong purple fill -->
+            <solid android:color="#4E00FF"/>
+
+            <!-- Crisp border (optional) -->
+            <stroke
+                android:width="3dp"
+                android:color="#FFFFFFFF"/>
+
+            <!-- Keep it circular -->
+            <size
+                android:width="140dp"
+                android:height="140dp"/>
         </shape>
     </item>
+
 </ripple>

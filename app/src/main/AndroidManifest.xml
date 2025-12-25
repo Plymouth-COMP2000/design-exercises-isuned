@@ -20,6 +20,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".StaffLoginActivity" />
+        <activity android:name=".UserLoginActivity" />
+        <activity android:name=".GuestSettingsActivity" />
+        <activity android:name=".GuestReservationsActivity" />
+        <activity android:name=".UserHomeActivity" />
+        <activity android:name=".StaffMainActivity" />
+
+
     </application>
 
 </manifest>

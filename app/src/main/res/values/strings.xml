@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">HQ Restaurant</string>
+    <string name="app_name">HQRestaurant</string>
+
+    <!-- keep your array too -->
+    <string-array name="guest_pages">
+        <item>Navigate...</item>
+        <item>Home</item>
+        <item>Menu</item>
+        <item>Reservations</item>
+        <item>Cart</item>
+        <item>Profile</item>
+        <item>Settings</item>
+        <item>Logout</item>
+    </string-array>
 </resources>
