@@ -17,7 +17,7 @@ public class StaffLoginActivity extends AppCompatActivity {
 
     // TEMP credentials (change later)
     private static final String STAFF_USER = "nedu";
-    private static final String STAFF_PASS = "123";
+    private static final String STAFF_PASS = "123nedu";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
