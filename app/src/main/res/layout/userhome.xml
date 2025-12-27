@@ -258,7 +258,7 @@
     <!-- BOTTOM NAV (guest menu) -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="74dp"
         android:background="#334E00FF"
         android:elevation="8dp"
@@ -266,6 +266,9 @@
         app:itemTextColor="@color/white"
         app:menu="@menu/guest_button_nav_menu"
         app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,24 +16,35 @@ public class UserHomeActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
 
-        // ✅ Make sure "Home" is selected on this page
+        // Home selected
         bottomNav.setSelectedItemId(R.id.guest_nav_home);
 
         bottomNav.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
             if (id == R.id.guest_nav_home) {
-                // ✅ Stay here (DO NOT open MainActivity)
+                return true; // stay here
+            }
+
+            if (id == R.id.guest_nav_reservations) {
+                startActivity(new Intent(UserHomeActivity.this, GuestReservationsActivity.class));
                 return true;
-            } else if (id == R.id.guest_nav_reservations) {
-                startActivity(new Intent(this, GuestReservationsActivity.class));
-                return true;
-            } else if (id == R.id.guest_nav_settings) {
-                startActivity(new Intent(this, GuestSettingsActivity.class));
+            }
+
+            if (id == R.id.guest_nav_settings) {
+                startActivity(new Intent(UserHomeActivity.this, GuestSettingsActivity.class));
                 return true;
             }
 
             return false;
         });
+    }
+
+    // When you come back to home, always re-select Home
+    @Override
+    protected void onResume() {
+        super.onResume();
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
+        if (bottomNav != null) bottomNav.setSelectedItemId(R.id.guest_nav_home);
     }
 }

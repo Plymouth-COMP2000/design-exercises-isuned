@@ -27,6 +27,9 @@
         <activity android:name=".GuestReservationsActivity" />
         <activity android:name=".UserHomeActivity" />
         <activity android:name=".StaffMainActivity" />
+        <activity android:name=".StaffManageMenuActivity" />
+        <activity android:name=".StaffSettings" />
+
 
 
     </application>

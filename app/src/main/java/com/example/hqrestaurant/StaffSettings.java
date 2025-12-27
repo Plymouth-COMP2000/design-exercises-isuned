@@ -1,28 +1,21 @@
 package com.example.hqrestaurant;
 
-
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class GuestReservationsActivity extends AppCompatActivity {
+public class StaffSettings extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.guest_reservations);
+        setContentView(R.layout.staff_settings);
 
-        // Back arrow
         View backButton = findViewById(R.id.backButton);
         if (backButton != null) {
             backButton.setOnClickListener(v -> finish());
         }
-
-        // OPTIONAL: hook buttons if you want later
-        // View btnConfirm = findViewById(R.id.btnConfirm);
-        // View btnCancel = findViewById(R.id.btnCancel);
-        // etc...
     }
 }
 

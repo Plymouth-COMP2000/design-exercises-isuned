@@ -24,7 +24,7 @@ public class UserLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_log); // ✅ your user login XML file
+        setContentView(R.layout.user_log); // ✅  user login XML file
 
         usernameInput = findViewById(R.id.usernameInput);
         passwordInput = findViewById(R.id.passwordInput);
