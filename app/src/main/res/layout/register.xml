@@ -8,21 +8,19 @@
     android:background="@drawable/pinkbackground"
     tools:context=".RegisterActivity">
 
-    <!-- Back button (optional, but matches your other pages) -->
     <ImageButton
         android:id="@+id/backButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="51dp"
+        android:layout_height="52dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:background="@android:color/transparent"
         android:contentDescription="Back"
         android:src="@drawable/baseline_arrow_back_24"
-        app:tint="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#FFFFFF" />
 
-    <!-- Page title -->
     <TextView
         android:id="@+id/registerTitle"
         android:layout_width="wrap_content"
@@ -36,7 +34,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- White card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/registerCard"
         android:layout_width="0dp"
@@ -51,85 +48,127 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="18dp">
+            android:layout_height="wrap_content">
 
-            <!-- Icon -->
-            <ImageView
-                android:id="@+id/profileIcon"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/logo"
-                android:contentDescription="Register Icon"
-                android:background="@drawable/circle_shape"
-                android:padding="18dp" />
-
-            <!-- Name input -->
-            <EditText
-                android:id="@+id/nameInput"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="18dp"
-                android:hint="Name"
-                android:inputType="textPersonName"
-                android:paddingHorizontal="14dp"
-                android:background="@android:drawable/edit_text"
-                android:textColor="#222222"
-                android:textColorHint="#777777" />
-
-            <!-- Email input -->
-            <EditText
-                android:id="@+id/emailInput"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="12dp"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:paddingHorizontal="14dp"
-                android:background="@android:drawable/edit_text"
-                android:textColor="#222222"
-                android:textColorHint="#777777" />
-
-            <!-- Password input -->
-            <EditText
-                android:id="@+id/passwordInput"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="12dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:paddingHorizontal="14dp"
-                android:background="@android:drawable/edit_text"
-                android:textColor="#222222"
-                android:textColorHint="#777777" />
-
-            <!-- Login link -->
-            <TextView
-                android:id="@+id/loginLink"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Already have an account? Login"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="#3F51B5"
-                android:layout_gravity="center_horizontal" />
+                android:orientation="vertical"
+                android:padding="18dp">
 
-            <!-- Sign Up button -->
-            <Button
-                android:id="@+id/signUpButton"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="14dp"
-                android:text="Sign Up"
-                android:textAllCaps="false"
-                android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/profileIcon"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/logo"
+                    android:contentDescription="Register Icon"
+                    android:background="@drawable/circle_shape"
+                    android:padding="18dp" />
 
-        </LinearLayout>
+                <!-- Username -->
+                <EditText
+                    android:id="@+id/usernameInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="18dp"
+                    android:hint="Username"
+                    android:inputType="text"
+                    android:paddingHorizontal="14dp"
+                    android:background="@android:drawable/edit_text"
+                    android:textColor="#222222"
+                    android:textColorHint="#777777" />
+
+                <!-- First name -->
+                <EditText
+                    android:id="@+id/firstNameInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="12dp"
+                    android:hint="First name"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="14dp"
+                    android:background="@android:drawable/edit_text"
+                    android:textColor="#222222"
+                    android:textColorHint="#777777" />
+
+                <!-- Last name -->
+                <EditText
+                    android:id="@+id/lastNameInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="12dp"
+                    android:hint="Last name"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="14dp"
+                    android:background="@android:drawable/edit_text"
+                    android:textColor="#222222"
+                    android:textColorHint="#777777" />
+
+                <!-- Email -->
+                <EditText
+                    android:id="@+id/emailInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="12dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:paddingHorizontal="14dp"
+                    android:background="@android:drawable/edit_text"
+                    android:textColor="#222222"
+                    android:textColorHint="#777777" />
+
+                <!-- Contact -->
+                <EditText
+                    android:id="@+id/contactInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="12dp"
+                    android:hint="Contact (phone)"
+                    android:inputType="phone"
+                    android:paddingHorizontal="14dp"
+                    android:background="@android:drawable/edit_text"
+                    android:textColor="#222222"
+                    android:textColorHint="#777777" />
+
+                <!-- Password -->
+                <EditText
+                    android:id="@+id/passwordInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="12dp"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:paddingHorizontal="14dp"
+                    android:background="@android:drawable/edit_text"
+                    android:textColor="#222222"
+                    android:textColorHint="#777777" />
+
+                <TextView
+                    android:id="@+id/loginLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Already have an account? Login"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#3F51B5"
+                    android:layout_gravity="center_horizontal" />
+
+                <Button
+                    android:id="@+id/signUpButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="14dp"
+                    android:text="Sign Up"
+                    android:textAllCaps="false"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </ScrollView>
+
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

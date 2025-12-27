@@ -11,55 +11,105 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONObject;
+
 public class UserLoginActivity extends AppCompatActivity {
 
     private EditText usernameInput, passwordInput;
     private Button loginButton;
     private ImageView backButton;
 
-    // TEMP user login (change later to database/firebase)
-    private static final String USER_USER = "user1";
-    private static final String USER_PASS = "1234";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_log); // ✅  user login XML file
+        setContentView(R.layout.user_log);
 
         usernameInput = findViewById(R.id.usernameInput);
         passwordInput = findViewById(R.id.passwordInput);
-        loginButton = findViewById(R.id.loginButton);
+        loginButton   = findViewById(R.id.loginButton);
 
-        // Only if you added a back arrow ImageView with id backButton
         backButton = findViewById(R.id.backButton);
-        if (backButton != null) {
-            backButton.setOnClickListener(v -> finish());
+        if (backButton != null) backButton.setOnClickListener(v -> finish());
+
+        View registerText = findViewById(R.id.registerLink);
+        if (registerText != null) {
+            registerText.setOnClickListener(v ->
+                    startActivity(new Intent(UserLoginActivity.this, RegisterActivity.class))
+            );
         }
 
-        loginButton.setOnClickListener(v -> {
-            String username = usernameInput.getText().toString().trim();
-            String password = passwordInput.getText().toString().trim();
+        loginButton.setOnClickListener(v -> loginWithApi());
+    }
 
-            if (TextUtils.isEmpty(username)) {
-                usernameInput.setError("Username required");
-                usernameInput.requestFocus();
-                return;
-            }
+    private void loginWithApi() {
+        String username = safe(usernameInput);
+        String password = safe(passwordInput);
 
-            if (TextUtils.isEmpty(password)) {
-                passwordInput.setError("Password required");
-                passwordInput.requestFocus();
-                return;
-            }
+        if (TextUtils.isEmpty(username)) {
+            usernameInput.setError("Username required");
+            usernameInput.requestFocus();
+            return;
+        }
 
-            if (username.equals(USER_USER) && password.equals(USER_PASS)) {
-                Intent i = new Intent(UserLoginActivity.this, UserHomeActivity.class);
-                i.putExtra("username", username);
-                startActivity(i);
-                finish();
-            } else {
-                Toast.makeText(UserLoginActivity.this, "Invalid user login details", Toast.LENGTH_SHORT).show();
-            }
-        });
+        if (TextUtils.isEmpty(password)) {
+            passwordInput.setError("Password required");
+            passwordInput.requestFocus();
+            return;
+        }
+
+        loginButton.setEnabled(false);
+
+        // ✅ Call API: read_user/{student_id}/{username}
+        Api.readUser(this, username,
+                response -> {
+                    loginButton.setEnabled(true);
+
+                    try {
+                        // Some APIs return { "user": { ... } } instead of flat json
+                        JSONObject userObj = response.has("user") ? response.optJSONObject("user") : response;
+                        if (userObj == null) {
+                            Toast.makeText(this, "Login error: user data missing", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        String apiUsername = userObj.optString("username", "");
+                        String apiPassword = userObj.optString("password", "");
+
+                        // If password is still empty, API response shape is different
+                        if (TextUtils.isEmpty(apiPassword)) {
+                            Toast.makeText(this,
+                                    "Login error: password not returned by API",
+                                    Toast.LENGTH_LONG).show();
+                            return;
+                        }
+
+                        // Optional: ensure the returned username matches
+                        if (!TextUtils.isEmpty(apiUsername) && !username.equals(apiUsername)) {
+                            Toast.makeText(this, "User mismatch / not found", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        if (password.equals(apiPassword)) {
+                            Intent i = new Intent(UserLoginActivity.this, UserHomeActivity.class);
+                            i.putExtra("username", username);
+                            startActivity(i);
+                            finish();
+                        } else {
+                            Toast.makeText(UserLoginActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (Exception ex) {
+                        Toast.makeText(this, "Parse error: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                },
+                error -> {
+                    loginButton.setEnabled(true);
+                    Toast.makeText(UserLoginActivity.this, "User not found / API error", Toast.LENGTH_SHORT).show();
+                }
+        );
+    }
+
+    private String safe(EditText et) {
+        return (et == null || et.getText() == null) ? "" : et.getText().toString().trim();
     }
 }
