@@ -69,8 +69,8 @@ public class RegisterActivity extends AppCompatActivity {
         String contact   = safe(contactInput);
         String password  = safe(passwordInput);
 
-        if (username.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || email.isEmpty()
-                || contact.isEmpty() || password.isEmpty()) {
+        if (username.isEmpty() || firstname.isEmpty() || lastname.isEmpty() ||
+                email.isEmpty() || contact.isEmpty() || password.isEmpty()) {
             toast("Please fill in all fields.");
             return;
         }
@@ -87,17 +87,16 @@ public class RegisterActivity extends AppCompatActivity {
 
         signUpButton.setEnabled(false);
 
-        // 1) Create student DB first
-        createStudentDb(() -> {
-            // 2) Then create user
-            createUser(username, firstname, lastname, email, contact, password);
-        });
+        // Create DB first (or continue if it already exists)
+        createStudentDb(() ->
+                createUser(username, firstname, lastname, email, contact, password)
+        );
     }
 
+    // 🔹 FIXED VERSION — continues when DB already exists
     private void createStudentDb(Runnable onDone) {
         String url = BASE_URL + "/create_student/" + STUDENT_ID;
 
-        // send {} so server sees JSON content-type
         Request request = new Request.Builder()
                 .url(url)
                 .post(RequestBody.create("{}", JSON))
@@ -117,14 +116,22 @@ public class RegisterActivity extends AppCompatActivity {
                 String resp = response.body() != null ? response.body().string() : "";
 
                 runOnUiThread(() -> {
-                    // If DB already exists, some APIs return 200/201 or sometimes 409.
-                    // We'll treat ANY 2xx as success. If you get 409, tell me and I'll adjust.
+
+                    // 👍 DB created successfully
                     if (response.isSuccessful()) {
                         if (onDone != null) onDone.run();
-                    } else {
-                        signUpButton.setEnabled(true);
-                        toast("Create student failed (" + response.code() + "): " + resp);
+                        return;
                     }
+
+                    // 👍 DB already exists → continue anyway
+                    if (response.code() == 400 && resp.contains("already exists")) {
+                        if (onDone != null) onDone.run();
+                        return;
+                    }
+
+                    // ❌ Any other error = stop
+                    signUpButton.setEnabled(true);
+                    toast("Create student failed (" + response.code() + "): " + resp);
                 });
             }
         });
