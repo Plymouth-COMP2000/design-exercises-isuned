@@ -1,7 +1,9 @@
-//user login page
+// user login page
+// UserLoginActivity.java
 package com.example.hqrestaurant;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -75,26 +77,33 @@ public class UserLoginActivity extends AppCompatActivity {
 
                         String apiUsername = userObj.optString("username", "");
                         String apiPassword = userObj.optString("password", "");
+                        String apiEmail    = userObj.optString("email", "");
 
-                        // If password is still empty, API response shape is different
                         if (TextUtils.isEmpty(apiPassword)) {
-                            Toast.makeText(this,
-                                    "Login error: password not returned by API",
-                                    Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Login error: password not returned by API", Toast.LENGTH_LONG).show();
                             return;
                         }
 
-                        // Optional: ensure the returned username matches
+                        // Optional: ensure returned username matches what was typed
                         if (!TextUtils.isEmpty(apiUsername) && !username.equals(apiUsername)) {
                             Toast.makeText(this, "User mismatch / not found", Toast.LENGTH_SHORT).show();
                             return;
                         }
 
                         if (password.equals(apiPassword)) {
+
+                            // ✅ SAVE SESSION LOCALLY so GuestSettings can show real user info
+                            SharedPreferences sp = getSharedPreferences("session", MODE_PRIVATE);
+                            sp.edit()
+                                    .putString("username", username)
+                                    .putString("email", apiEmail)
+                                    .apply();
+
                             Intent i = new Intent(UserLoginActivity.this, UserHomeActivity.class);
                             i.putExtra("username", username);
                             startActivity(i);
                             finish();
+
                         } else {
                             Toast.makeText(UserLoginActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
                         }

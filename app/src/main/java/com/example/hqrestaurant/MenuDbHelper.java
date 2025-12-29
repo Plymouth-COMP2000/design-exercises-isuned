@@ -1,3 +1,5 @@
+// menu Db
+
 package com.example.hqrestaurant;
 
 import android.content.ContentValues;

@@ -8,7 +8,6 @@
     android:background="@drawable/pinkbackground"
     tools:context=".GuestSettingsActivity">
 
-    <!-- Back button -->
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="44dp"
@@ -24,7 +23,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Page Title -->
     <TextView
         android:id="@+id/settingsTitle"
         android:layout_width="wrap_content"
@@ -33,12 +31,11 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:textSize="22sp"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="22dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Main White Card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/settingsCard"
         android:layout_width="0dp"
@@ -62,7 +59,6 @@
                 android:orientation="vertical"
                 android:padding="18dp">
 
-                <!-- Section heading -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -122,19 +118,6 @@
                     android:textStyle="bold"
                     android:textColor="#222222"
                     android:textSize="14sp"
-                    android:layout_marginBottom="14dp"/>
-
-                <Button
-                    android:id="@+id/resetPasswordButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="44dp"
-                    android:text="Reset Password"
-                    android:textAllCaps="false"
-                    android:textStyle="bold"
-                    android:textColor="#FFFFFF"
-                    android:background="@drawable/login_button"
-                    android:backgroundTint="@null"
-                    android:paddingHorizontal="18dp"
                     android:layout_marginBottom="18dp"/>
 
                 <View
@@ -158,13 +141,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New reservations notification"
-                    android:textColor="#333333"/>
-
-                <CheckBox
-                    android:id="@+id/checkReservationUpdates"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Reservation updates"
                     android:textColor="#333333"/>
 
                 <CheckBox
@@ -192,13 +168,6 @@
                     android:layout_marginBottom="8dp"/>
 
                 <CheckBox
-                    android:id="@+id/checkDarkMode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dark mode"
-                    android:textColor="#333333"/>
-
-                <CheckBox
                     android:id="@+id/checkSoundAlerts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -221,7 +190,7 @@
 
             </LinearLayout>
         </ScrollView>
-
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
