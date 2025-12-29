@@ -1,3 +1,5 @@
+// staff main page processes
+
 package com.example.hqrestaurant;
 
 import android.content.Intent;

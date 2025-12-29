@@ -1,3 +1,5 @@
+
+// user register process
 package com.example.hqrestaurant;
 
 import android.content.Intent;

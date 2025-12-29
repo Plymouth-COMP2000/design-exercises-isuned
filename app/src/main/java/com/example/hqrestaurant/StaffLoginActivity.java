@@ -1,3 +1,5 @@
+
+// staff login process
 package com.example.hqrestaurant;
 
 import android.content.Intent;
@@ -15,24 +17,23 @@ public class StaffLoginActivity extends AppCompatActivity {
     private EditText usernameInput, passwordInput;
     private Button loginButton;
 
-    // TEMP credentials (change later)
-    private static final String STAFF_USER = "nedu";
-    private static final String STAFF_PASS = "1234";
+    private StaffDbHelper staffDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.staff); // staff login XML
+        setContentView(R.layout.staff); // your staff login XML
 
         usernameInput = findViewById(R.id.usernameInput);
         passwordInput = findViewById(R.id.passwordInput);
-        loginButton = findViewById(R.id.loginButton);
+        loginButton   = findViewById(R.id.loginButton);
 
-        // Back arrow (works for ImageView or ImageButton)
+        // Back arrow
         View backButton = findViewById(R.id.backButton);
-        if (backButton != null) {
-            backButton.setOnClickListener(v -> finish());
-        }
+        if (backButton != null) backButton.setOnClickListener(v -> finish());
+
+        // Init local DB (this will create DB + seed staff users on first run)
+        staffDb = new StaffDbHelper(this);
 
         loginButton.setOnClickListener(v -> attemptLogin());
     }
@@ -41,7 +42,6 @@ public class StaffLoginActivity extends AppCompatActivity {
         String username = usernameInput.getText().toString().trim();
         String password = passwordInput.getText().toString().trim();
 
-        // Validate input
         if (TextUtils.isEmpty(username)) {
             usernameInput.setError("Username required");
             usernameInput.requestFocus();
@@ -54,10 +54,13 @@ public class StaffLoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Check credentials
-        if (username.equals(STAFF_USER) && password.equals(STAFF_PASS)) {
+        // Check local SQLite staff table
+        String fullname = staffDb.loginStaff(username, password);
+
+        if (fullname != null) {
             Intent intent = new Intent(StaffLoginActivity.this, StaffMainActivity.class);
-            intent.putExtra("staff_name", username); // show on staff homepage
+            intent.putExtra("staff_name", fullname);
+            intent.putExtra("staff_username", username);
             startActivity(intent);
             finish();
         } else {

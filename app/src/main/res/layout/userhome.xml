@@ -8,12 +8,12 @@
     android:background="@drawable/pinkbackground"
     tools:context=".UserHomeActivity">
 
-    <!-- PAGE TITLE (kept on background like your other pages) -->
+    <!-- PAGE TITLE -->
     <TextView
         android:id="@+id/pageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GUEST HOMEPAGE"
+        android:text="MENU"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:textSize="24sp"
@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- MAIN WHITE CARD (like Settings page) -->
+    <!-- MAIN WHITE CARD -->
     <androidx.cardview.widget.CardView
         android:id="@+id/guestMainCard"
         android:layout_width="0dp"
@@ -40,222 +40,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView">
 
-        <!-- Scroll so it works on small screens -->
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:orientation="vertical"
+            android:padding="18dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Welcome (optional) -->
+            <TextView
+                android:id="@+id/welcomeText"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="18dp">
+                android:text="Welcome"
+                android:textColor="#222222"
+                android:textStyle="bold"
+                android:textSize="16sp" />
 
-                <!-- Welcome -->
-                <TextView
-                    android:id="@+id/welcomeText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Welcome, Guest"
-                    android:textColor="#222222"
-                    android:textStyle="bold"
-                    android:textSize="16sp" />
+            <!-- MENU GRID ONLY -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/menuRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingTop="12dp"
+                tools:listitem="@layout/item_menu" />
 
-                <!-- Dropdown label -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Navigate"
-                    android:textColor="#666666"
-                    android:textSize="13sp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="6dp"/>
-
-                <!-- Spinner container -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/spinnerCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:backgroundTint="#F3F3F7"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="2dp"
-                    app:cardUseCompatPadding="true">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <Spinner
-                            android:id="@+id/guestNavSpinner"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:entries="@array/guest_pages"
-                            android:spinnerMode="dropdown"
-                            android:popupBackground="#FFFFFF"
-                            android:paddingStart="12dp"
-                            android:paddingEnd="44dp"
-                            android:gravity="center_vertical"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/dropArrow"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:src="@drawable/ic_arrow_drop_down"
-                            android:contentDescription="Dropdown"
-                            android:layout_marginEnd="12dp"
-                            app:tint="#444444"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
-                <!-- Search -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Search Menu"
-                    android:textColor="#666666"
-                    android:textSize="13sp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="6dp"/>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/searchInput"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:hint="Search..."
-                        android:background="@drawable/input_box_light"
-                        android:paddingHorizontal="12dp"
-                        android:textColor="#222222"
-                        android:textColorHint="#888888"
-                        android:inputType="text"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/searchButton"
-                        android:layout_marginEnd="10dp"/>
-
-                    <Button
-                        android:id="@+id/searchButton"
-                        android:layout_width="110dp"
-                        android:layout_height="50dp"
-                        android:text="Search"
-                        android:textAllCaps="false"
-                        android:textStyle="bold"
-                        android:textColor="#FFFFFF"
-                        android:background="@drawable/login_button"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/searchInput"
-                        app:layout_constraintBottom_toBottomOf="@id/searchInput"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <!-- Divider -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E6E6E6"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginBottom="12dp"/>
-
-                <!-- Menu Grid Title -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Menu"
-                    android:textColor="#222222"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="10dp"/>
-
-                <!-- Menu Grid -->
-                <GridLayout
-                    android:id="@+id/menuGrid"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:columnCount="3"
-                    android:useDefaultMargins="true">
-
-                    <!-- Item card template -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_columnWeight="1"
-                        android:backgroundTint="#F7F7FB"
-                        app:cardCornerRadius="12dp"
-                        app:cardElevation="3dp"
-                        app:cardUseCompatPadding="true">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="10dp">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="90dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/logo"
-                                android:contentDescription="Menu Item"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Item Name"
-                                android:textStyle="bold"
-                                android:textColor="#222222"
-                                android:textSize="13sp"
-                                android:paddingTop="8dp"/>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:paddingTop="6dp">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text="£9.99"
-                                    android:textColor="#666666"
-                                    android:textSize="12sp"/>
-
-                                <Button
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="34dp"
-                                    android:text="Add"
-                                    android:textAllCaps="false"
-                                    android:textStyle="bold"
-                                    android:textColor="#FFFFFF"
-                                    android:background="@drawable/login_button"/>
-                            </LinearLayout>
-
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Copy/paste more item cards later -->
-                </GridLayout>
-
-            </LinearLayout>
-        </ScrollView>
-
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- BOTTOM NAV (guest menu) -->
+    <!-- BOTTOM NAV (keep if you still want it) -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
@@ -270,5 +83,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+

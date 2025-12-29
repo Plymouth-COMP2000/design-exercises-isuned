@@ -1,3 +1,5 @@
+
+// Default page where user picks between staff and user
 package com.example.hqrestaurant;
 
 import android.content.Intent;

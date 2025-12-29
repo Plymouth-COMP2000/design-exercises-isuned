@@ -1,3 +1,4 @@
+//user login page
 package com.example.hqrestaurant;
 
 import android.content.Intent;
