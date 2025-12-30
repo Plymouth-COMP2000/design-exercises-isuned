@@ -30,16 +30,14 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.VH> {
     public void onBindViewHolder(@NonNull VH holder, int position) {
         MenuItem item = items.get(position);
 
-        holder.name.setText(item.name);
-        holder.price.setText(item.price);
-
-        // ✅ This is the key line for different images
-        holder.image.setImageResource(item.imageResId);
+        holder.name.setText(item.getName());
+        holder.price.setText(item.getPrice());
+        holder.image.setImageResource(item.getImageResId());
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return items == null ? 0 : items.size();
     }
 
     static class VH extends RecyclerView.ViewHolder {

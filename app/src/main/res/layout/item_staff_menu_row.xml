@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="10dp">
+
+    <TextView
+        android:id="@+id/staffItemName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.2"
+        android:text="Item"
+        android:textColor="#222222" />
+
+    <TextView
+        android:id="@+id/staffItemPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:text="£0.00"
+        android:textColor="#222222"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/staffItemImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:text="[PNG]"
+        android:textColor="#222222"
+        android:gravity="center" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.4"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/staffDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[Delete]"
+            android:textStyle="bold"
+            android:textColor="#D32F2F" />
+    </LinearLayout>
+
+</LinearLayout>
+
