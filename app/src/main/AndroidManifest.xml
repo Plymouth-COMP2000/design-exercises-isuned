@@ -34,6 +34,7 @@
         <activity android:name=".StaffSettings" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MyReservationsActivity"/>
+        <activity android:name=".StaffReservationActivity"/>
 
 
 

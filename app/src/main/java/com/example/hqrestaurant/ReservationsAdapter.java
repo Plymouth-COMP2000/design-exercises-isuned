@@ -29,15 +29,17 @@ public class ReservationsAdapter extends RecyclerView.Adapter<ReservationsAdapte
     @NonNull
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reservation, parent, false);
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_reservation, parent, false);
         return new VH(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull VH h, int position) {
         ReservationsModel m = list.get(position);
-        h.txtMain.setText(m.username + " - " + m.time);
-        h.txtSub.setText("Date: " + m.date + "   Guests: " + m.guests);
+
+        h.txtMain.setText(m.getUsername() + " - " + m.getTime());
+        h.txtSub.setText("Date: " + m.getDate() + "  Guests: " + m.getGuests());
 
         h.btnDelete.setOnClickListener(v -> {
             if (onDeleteClick != null) onDeleteClick.onDelete(m);
@@ -51,7 +53,7 @@ public class ReservationsAdapter extends RecyclerView.Adapter<ReservationsAdapte
 
     static class VH extends RecyclerView.ViewHolder {
         TextView txtMain, txtSub;
-        Button btnDelete;
+        TextView btnDelete;
 
         VH(@NonNull View itemView) {
             super(itemView);
@@ -61,5 +63,6 @@ public class ReservationsAdapter extends RecyclerView.Adapter<ReservationsAdapte
         }
     }
 }
+
 
 
