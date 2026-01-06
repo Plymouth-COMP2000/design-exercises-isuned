@@ -6,25 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pinkbackground"
-    tools:context=".StaffSettingsActivity">
+    tools:context=".StaffSettings">
 
-    <!-- Back button -->
     <ImageButton
         android:id="@+id/backButton"
         android:layout_width="44dp"
         android:layout_height="44dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
         android:background="@android:color/transparent"
         android:contentDescription="Back"
         android:padding="10dp"
         android:scaleType="centerInside"
         android:src="@drawable/baseline_arrow_back_24"
         app:tint="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    <!-- Title -->
     <TextView
         android:id="@+id/settingsTitle"
         android:layout_width="wrap_content"
@@ -33,23 +31,19 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:textSize="22sp"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="22dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Main Card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/settingsCard"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#FFFFFFFF"
-        app:cardCornerRadius="14dp"
-        app:cardElevation="6dp"
+        android:layout_margin="18dp"
+        android:backgroundTint="#FFFFFF"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="8dp"
         app:layout_constraintTop_toBottomOf="@id/settingsTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,99 +59,44 @@
                 android:orientation="vertical"
                 android:padding="18dp">
 
-                <!-- Section header -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SETTINGS"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="#222222" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="#DDDDDD" />
-
-                <!-- Account -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Account"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:textColor="#222222"
-                    android:layout_marginBottom="10dp" />
-
-                <TextView
-                    android:id="@+id/usernameLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Username:"
-                    android:textSize="14sp"
-                    android:textColor="#444444" />
-
-                <TextView
-                    android:id="@+id/usernameValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="staff1"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="#222222"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="12dp" />
-
-                <Button
-                    android:id="@+id/changePasswordBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="44dp"
-                    android:text="Change Password"
-                    android:textAllCaps="false" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="#DDDDDD" />
-
                 <!-- Notifications -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Notifications"
                     android:textStyle="bold"
-                    android:textSize="14sp"
                     android:textColor="#222222"
-                    android:layout_marginBottom="10dp" />
+                    android:textSize="15sp"
+                    android:layout_marginBottom="8dp"/>
 
                 <CheckBox
-                    android:id="@+id/cbNewReservations"
+                    android:id="@+id/checkNewReservations"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New Reservations"
-                    android:textColor="#222222" />
+                    android:text="New reservations"
+                    android:textColor="#333333"
+                    android:layout_marginBottom="18dp"/>
 
-                <CheckBox
-                    android:id="@+id/cbReservationChanges"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Reservation Changes"
-                    android:textColor="#222222" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="14dp"
+                    android:background="#E0E0E0"/>
 
-                <CheckBox
-                    android:id="@+id/cbMenuUpdates"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Menu Updates"
-                    android:textColor="#222222" />
+                <!-- Logout -->
+                <Button
+                    android:id="@+id/logoutButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="Logout"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/login_button"
+                    android:backgroundTint="@null"/>
 
             </LinearLayout>
         </ScrollView>
-
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -62,13 +62,8 @@
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
-            <Button
-                android:id="@+id/notificationButton"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:text="Notifications (6)"
-                android:textAllCaps="false"
-                android:textStyle="bold" />
+            <!-- ✅ Notifications button removed -->
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -137,51 +132,6 @@
         </GridLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Reservations Card (WHITE) -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/reservationsCard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="20dp"
-        app:cardCornerRadius="14dp"
-        app:cardElevation="6dp"
-        android:backgroundTint="#FFFFFFFF"
-        app:layout_constraintTop_toBottomOf="@id/menuCard"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/reservationsTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Reservations For The Day"
-                android:textStyle="bold"
-                android:textColor="#222222"
-                android:textSize="16sp"
-                android:layout_marginBottom="8dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#DDDDDD"
-                android:layout_marginBottom="10dp" />
-
-            <TextView
-                android:id="@+id/reservationList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1. Chinedu Isu - 6PM - Confirmed\n2. Dave J - 7PM - Pending"
-                android:textColor="#222222"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    <!-- ✅ Reservations For The Day card removed -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

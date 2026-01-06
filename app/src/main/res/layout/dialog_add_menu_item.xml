@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etItemName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Item name" />
+
+    <EditText
+        android:id="@+id/etItemPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price (e.g. 6.99 or £6.99)"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:id="@+id/etImageName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Drawable name (e.g. burger)"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>

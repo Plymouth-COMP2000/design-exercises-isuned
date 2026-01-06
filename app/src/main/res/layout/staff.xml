@@ -94,16 +94,6 @@
                 android:textColor="#222222"
                 android:textColorHint="#777777" />
 
-            <!-- Forgot password -->
-            <TextView
-                android:id="@+id/forgotPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Forgot password?"
-                android:textSize="14sp"
-                android:textColor="#444444"
-                android:layout_gravity="start" />
 
             <!-- Login button -->
             <Button

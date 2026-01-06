@@ -126,55 +126,6 @@
                     android:layout_marginBottom="14dp"
                     android:background="#E0E0E0"/>
 
-                <!-- Notifications -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Notifications"
-                    android:textStyle="bold"
-                    android:textColor="#222222"
-                    android:textSize="15sp"
-                    android:layout_marginBottom="8dp"/>
-
-                <CheckBox
-                    android:id="@+id/checkNewReservations"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New reservations notification"
-                    android:textColor="#333333"/>
-
-                <CheckBox
-                    android:id="@+id/checkMenuChanges"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Menu changes"
-                    android:textColor="#333333"
-                    android:layout_marginBottom="18dp"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="#E0E0E0"/>
-
-                <!-- App Settings -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="App settings"
-                    android:textStyle="bold"
-                    android:textColor="#222222"
-                    android:textSize="15sp"
-                    android:layout_marginBottom="8dp"/>
-
-                <CheckBox
-                    android:id="@+id/checkSoundAlerts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Enable sound alerts"
-                    android:textColor="#333333"
-                    android:layout_marginBottom="20dp"/>
-
                 <!-- Logout -->
                 <Button
                     android:id="@+id/logoutButton"
@@ -193,4 +144,3 @@
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

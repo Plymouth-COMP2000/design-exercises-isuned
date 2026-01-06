@@ -5,7 +5,6 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -99,7 +98,15 @@ public class GuestReservationsActivity extends AppCompatActivity {
             return;
         }
 
-        int guests = Integer.parseInt(guestsStr);
+        int guests;
+        try {
+            guests = Integer.parseInt(guestsStr);
+        } catch (NumberFormatException e) {
+            guestCountInput.setError("Guests must be a number");
+            guestCountInput.requestFocus();
+            return;
+        }
+
         if (guests <= 0) {
             guestCountInput.setError("Guests must be 1+");
             guestCountInput.requestFocus();
@@ -108,8 +115,14 @@ public class GuestReservationsActivity extends AppCompatActivity {
 
         long id = db.insertReservation(username, pickedDate, pickedTime, guests);
         if (id > 0) {
+
+            // ✅ TRIGGER STAFF NOTIFICATION (same phone)
+            // (This assumes you already created NotificationHelper.showNewReservation)
+            NotificationHelper.showNewReservation(this, username, pickedDate, pickedTime);
+
             Toast.makeText(this, "Reservation saved!", Toast.LENGTH_SHORT).show();
             clearForm();
+
         } else {
             Toast.makeText(this, "Failed to save reservation", Toast.LENGTH_SHORT).show();
         }
@@ -123,5 +136,4 @@ public class GuestReservationsActivity extends AppCompatActivity {
         guestCountInput.setText("");
     }
 }
-
 
